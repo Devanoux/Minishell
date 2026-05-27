@@ -1,48 +1,131 @@
 # Minishell
-![42](https://img.shields.io/badge/-42-black?style=for-the-badge&logo=42&logoColor=white) ![C](https://img.shields.io/badge/c-%2300599C.svg?style=for-the-badge&logo=c&logoColor=white)
 
-## Description
-As beautiful as a shell, minishell is a smaller reproduction of bash
+![42](https://img.shields.io/badge/42-black?style=for-the-badge&logo=42&logoColor=white)
+![C](https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white)
+
+## Overview
+
+**Minishell** is a simplified reproduction of the Bash shell developed in C as part of the 42 curriculum.
+
+The goal of this project is to understand how a Unix shell works internally by implementing command parsing, process management, pipes, redirections, environment variables, and built-in commands.
+
+---
+
 ## Features
-### - Builtin
-Command               | args / options | description |
-----------------------|-----------------|------------|
-`echo`       | `-n ` | print args inside the stdout |
-`cd`        | `~` | move beetween folder |
-`pwd`     | none | print the complete path to your current folder | 
-`export`    | `id=var` | print all env variable  |
-`unset`     | `id` | remove a variable to the env |
-`env`       | none |  print all assigned variable | 
-`exit`     | `code` | exit the shell |
 
-### - Operators
-Operator          | description         |
--------------------|---------------------|
-`>`                 | write output to the file        |
-`<`                   | redirect file to output       |
-`>>`                  | append output to file         |
-`<< 'EOF'`                  | create a heredoc          |
-`$ 'var'`                 | expand var by env variable  |
-`$?`                     | expand the last error code   |
+### Built-in Commands
 
-## Getting started
-### Download the repository
+| Command | Options / Arguments | Description |
+|---------|---------------------|-------------|
+| `echo` | `-n` | Display text in the standard output |
+| `cd` | `path` | Change the current working directory |
+| `pwd` | none | Print the current working directory |
+| `export` | `KEY=value` | Create or update environment variables |
+| `unset` | `KEY` | Remove environment variables |
+| `env` | none | Display environment variables |
+| `exit` | `code` | Exit the shell with a status code |
+
+---
+
+### Operators & Expansions
+
+| Operator | Description |
+|----------|-------------|
+| `>` | Redirect output to a file |
+| `<` | Redirect input from a file |
+| `>>` | Append output to a file |
+| `<< EOF` | Heredoc support |
+| `$VAR` | Environment variable expansion |
+| `$?` | Expand the last exit status |
+
+---
+
+## Project Structure
+
+```bash
+Minishell/
+├── includes/
+├── src/
+├── builtins/
+├── parsing/
+├── execution/
+├── signals/
+├── Makefile
+└── minishell
 ```
+
+---
+
+## Installation
+
+### Clone the repository
+
+```bash
 git clone git@github.com:Ernst-Devan/42_Minishell.git Minishell
 ```
-### Access and compile
-```
+
+### Compile the project
+
+```bash
 cd Minishell
 make
 ```
-### Launch the program
-```
+
+---
+
+## Usage
+
+Launch the shell with:
+
+```bash
 ./minishell
 ```
+
+Example:
+
+```bash
+minishell$ echo Hello World
+Hello World
+
+minishell$ ls -la | grep minishell
+
+minishell$ export USERNAME=marvin
+minishell$ echo $USERNAME
+marvin
+```
+
+---
+
+## Learning Objectives
+
+This project covers important Unix and system programming concepts such as:
+
+- Process creation with `fork`
+- Program execution with `execve`
+- File descriptors and redirections
+- Pipes
+- Signal handling
+- Environment management
+- Command parsing
+- Memory management
+
+---
+
 ## Contributors
-[@dernst] (https://github.com/Ernst-Devan)
 
-[@njooris] (https://github.com/rayseur123)
+- [@dernst](https://github.com/Ernst-Devan)
+- [@njooris](https://github.com/rayseur123)
 
-## Acknowledgments
-- Basic Shell (https://www.cs.purdue.edu/homes/grr/SystemsProgrammingBook/Book/Chapter5-WritingYourOwnShell.pdf)
+---
+
+## Resources
+
+- [Writing Your Own Shell](https://www.cs.purdue.edu/homes/grr/SystemsProgrammingBook/Book/Chapter5-WritingYourOwnShell.pdf)
+- Bash Manual
+- Unix Process Management Documentation
+
+---
+
+## License
+
+This project was developed for educational purposes as part of the 42 School curriculum.
